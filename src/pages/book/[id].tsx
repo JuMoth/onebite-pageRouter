@@ -1,15 +1,10 @@
 import fetchOneBook from "@/lib/fetch-one-book";
 import style from "@/pages/book/[id].module.css";
-import {
-  GetServerSidePropsContext,
-  GetStaticPropsContext,
-  InferGetServerSidePropsType,
-  InferGetStaticPropsType,
-} from "next";
-import { notFound } from "next/navigation";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+//import { notFound } from "next/navigation";
 import { useRouter } from "next/router";
 
-const mockData = {
+/* const mockData = {
   id: 1,
   title: "한 입 크기로 잘라 먹는 리액트",
   subTitle: "자바스크립트 기초부터 애플리케이션 배포까지",
@@ -19,7 +14,7 @@ const mockData = {
   publisher: "프로그래밍인사이트",
   coverImgUrl:
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
-};
+}; */
 
 export const getStaticPaths = () => {
   return {
@@ -60,8 +55,7 @@ export default function Page({
   if (router.isFallback) return "로딩중입니다";
   if (!book) return "문제가 발생했습니다 다시 시도하세요";
 
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    book;
+  const { title, subTitle, description, author, publisher, coverImgUrl } = book;
 
   return (
     <div className={style.container}>
